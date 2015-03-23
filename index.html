@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>	
+		.pass:before{
+			content:'Pass:';
+			color: green;
+		}
+		.fail:before{
+			content:'Fail:';
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<div id="result"></div>
+	<script>
+		var assert = function assert (outcome,description) {
+
+				var li = document.createElement('li');
+
+				li.className = outcome ? 'pass' : 'fail';
+				li.appendChild(document.createTextNode(description));
+				result.appendChild(li);
+		}
+		var someArray = [1,2,3];
+		var count = 0;
+
+		for (var i = 0; i < someArray.length; i++) {
+			setTimeout(function (){
+					assert(count ++ === i, 'test' + i);
+			}, i* 1000);
+			
+		};
+	</script>
+	
+</body>
+</html>
